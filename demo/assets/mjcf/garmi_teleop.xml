@@ -6,7 +6,7 @@
   <default>
     <default class="panda">
       <material specular="0.5" shininess="0.25"/>
-      <joint armature="0.1" damping="1" axis="0 0 1" range="-2.8973 2.8973"/>
+      <joint armature="1" damping="1000" frictionloss="100" axis="0 0 1" range="-2.8973 2.8973"/>
     </default>
   </default>
 
@@ -31,7 +31,6 @@
 
   <worldbody>
     <body name="garmi" childclass="panda">
-      <joint type="free"/>
       <geom type="mesh" rgba="0.15 0.15 0.15 1" mesh="body-collision"/>
       <geom size="0.2465 0.2465 0.0275" pos="0 0 0.24615" quat="0.92388 0 0 0.382683" type="box" rgba="0.8 0.8 0.8 1"/>
       <geom size="0.1 0.1 0.01" pos="0.1115 0 0.2863" quat="0.92388 0 0 0.382683" type="box" rgba="0.7 0.7 0.7 1"/>
@@ -40,31 +39,31 @@
       <geom pos="0 0 0" quat="0.499998 0.5 0.500002 0.5" type="mesh" mesh="mounting_plate"/>
       <body name="front_left_wheel_link" pos="0.319 0.2755 0.05" gravcomp="1">
         <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="2.5" diaginertia="0.00720101 0.00490071 0.00490071"/>
-        <joint name="front_left_wheel_joint" pos="0 0 0" axis="0 1 0" actuatorfrcrange="-100 100"/>
+        <joint name="teleop_front_left_wheel_joint" pos="0 0 0" axis="0 1 0" actuatorfrcrange="-100 100"/>
         <geom size="0.0759 0.0395" quat="0.707107 0.707107 0 0" type="cylinder" rgba="0.15 0.15 0.15 1"/>
       </body>
       <body name="front_right_wheel_link" pos="0.319 -0.2755 0.05" gravcomp="1">
         <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="2.5" diaginertia="0.00720101 0.00490071 0.00490071"/>
-        <joint name="front_right_wheel_joint" pos="0 0 0" axis="0 1 0" actuatorfrcrange="-100 100"/>
+        <joint name="teleop_front_right_wheel_joint" pos="0 0 0" axis="0 1 0" actuatorfrcrange="-100 100"/>
         <geom size="0.0759 0.0395" quat="0.707107 0.707107 0 0" type="cylinder" rgba="0.15 0.15 0.15 1"/>
       </body>
       <body name="rear_left_wheel_link" pos="-0.319 0.2755 0.05" gravcomp="1">
         <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="2.5" diaginertia="0.00720101 0.00490071 0.00490071"/>
-        <joint name="rear_left_wheel_joint" pos="0 0 0" axis="0 1 0" actuatorfrcrange="-100 100"/>
+        <joint name="teleop_rear_left_wheel_joint" pos="0 0 0" axis="0 1 0" actuatorfrcrange="-100 100"/>
         <geom size="0.0759 0.0395" quat="0.707107 0.707107 0 0" type="cylinder" rgba="0.15 0.15 0.15 1"/>
       </body>
       <body name="rear_right_wheel_link" pos="-0.319 -0.2755 0.05" gravcomp="1">
         <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="2.5" diaginertia="0.00720101 0.00490071 0.00490071"/>
-        <joint name="rear_right_wheel_joint" pos="0 0 0" axis="0 1 0" actuatorfrcrange="-100 100"/>
+        <joint name="teleop_rear_right_wheel_joint" pos="0 0 0" axis="0 1 0" actuatorfrcrange="-100 100"/>
         <geom size="0.0759 0.0395" quat="0.707107 0.707107 0 0" type="cylinder" rgba="0.15 0.15 0.15 1"/>
       </body>
       <body name="lift_0_lower_link" pos="0.1115 0 0.3213" quat="0.92388 0 0 0.382683" gravcomp="1">
         <inertial pos="0 0 0.4" quat="0.707107 0 0 0.707107" mass="10" diaginertia="0.553717 0.553639 0.0406901"/>
-        <joint name="lift_0_lower_joint" pos="0 0 0" axis="0 0 1" type="slide" range="0 0.4" actuatorfrcrange="-2000 2000" damping="0.01" frictionloss="0.01"/>
+        <joint name="teleop_lift_0_lower_joint" pos="0 0 0" axis="0 0 1" type="slide" range="0 0.4" actuatorfrcrange="-2000 2000" damping="0.01" frictionloss="0.01"/>
         <geom size="0.0782 0.07805 0.4" pos="0 0 0.4" type="box" rgba="0.7 0.7 0.7 1"/>
         <body name="lift_0_upper_link" pos="0 0 0.007" gravcomp="1">
           <inertial pos="-0.0759869 1.10431 0.220526" quat="0.77075 0.636979 0.0140975 0.00186395" mass="178.088" diaginertia="28.0259 27.0383 4.15061"/>
-          <joint name="lift_0_upper_joint" pos="0 0 0" axis="0 0 1" type="slide" range="0 0.4" actuatorfrcrange="-2000 2000" damping="0.01" frictionloss="0.01"/>
+          <joint name="teleop_lift_0_upper_joint" pos="0 0 0" axis="0 0 1" type="slide" range="0 0.4" actuatorfrcrange="-2000 2000" damping="0.01" frictionloss="0.01"/>
           <geom size="0.0645 0.0645 0.419" pos="0 0 0.419" type="box" rgba="0.7 0.7 0.7 1"/>
           <geom name="arm_0_fr3_link0_collision" pos="0.145876 -0.0594679 0.3223" quat="0.668742 -0.317681 0.386062 -0.55029" type="mesh" mesh="link0"/>
           <geom name="arm_1_fr3_link0_collision" pos="0.0594674 -0.145876 0.3223" quat="0.861986 0.497621 0.0483516 -0.0837596" type="mesh" mesh="link0"/>
@@ -72,36 +71,36 @@
           <geom pos="-0.078418 0.0784183 -0.3283" quat="0.653326 0.653263 0.270553 0.270579" type="mesh" mesh="neck_1"/>
           <body name="arm_0_fr3_link1" pos="0.434249 -0.0594676 0.488824" quat="0.668742 -0.317681 0.386062 -0.55029" gravcomp="1">
             <inertial pos="4.128e-07 -0.0181251 -0.0386036" quat="0.998098 -0.0605364 0.00380499 0.0110109" mass="2.92747" diaginertia="0.0239286 0.0227246 0.00610634"/>
-            <joint name="arm_0_fr3_joint1" pos="0 0 0" axis="0 0 1" range="-2.9007 2.9007" actuatorfrcrange="-87 87" damping="0.003" frictionloss="0.2"/>
+            <joint name="teleop_arm_0_fr3_joint1" pos="0 0 0" axis="0 0 1" range="-2.9007 2.9007" actuatorfrcrange="-87 87" />
             <geom name="arm_0_fr3_link1_collision" type="mesh" mesh="link1"/>
             <body name="arm_0_fr3_link2" quat="0.707107 -0.707107 0 0" gravcomp="1">
               <inertial pos="0.00318289 -0.0743222 0.00881461" quat="0.502599 0.584437 -0.465998 0.434366" mass="2.93554" diaginertia="0.0629567 0.0411924 0.0246371"/>
-              <joint name="arm_0_fr3_joint2" pos="0 0 0" axis="0 0 1" range="-1.8361 1.8361" actuatorfrcrange="-87 87" damping="0.003" frictionloss="0.2"/>
+              <joint name="teleop_arm_0_fr3_joint2" pos="0 0 0" axis="0 0 1" range="-1.8361 1.8361" actuatorfrcrange="-87 87" />
               <geom name="arm_0_fr3_link2_collision" type="mesh" mesh="link2"/>
               <body name="arm_0_fr3_link3" pos="0 -0.316 0" quat="0.707107 0.707107 0 0" gravcomp="1">
                 <inertial pos="0.0407016 -0.00482006 -0.0289731" quat="0.921025 -0.244161 0.155272 0.260745" mass="2.2449" diaginertia="0.0267409 0.0189869 0.0171587"/>
-                <joint name="arm_0_fr3_joint3" pos="0 0 0" axis="0 0 1" range="-2.9007 2.9007" actuatorfrcrange="-87 87" damping="0.003" frictionloss="0.2"/>
+                <joint name="teleop_arm_0_fr3_joint3" pos="0 0 0" axis="0 0 1" range="-2.9007 2.9007" actuatorfrcrange="-87 87" />
                 <geom name="arm_0_fr3_link3_collision" type="mesh" mesh="link3"/>
                 <body name="arm_0_fr3_link4" pos="0.0825 0 0" quat="0.707107 0.707107 0 0" gravcomp="1">
                   <inertial pos="-0.0459101 0.0630493 -0.00851879" quat="0.438018 0.803311 0.00937812 0.403414" mass="2.6156" diaginertia="0.05139 0.0372717 0.0160047"/>
-                  <joint name="arm_0_fr3_joint4" pos="0 0 0" axis="0 0 1" range="-3.077 -0.1169" actuatorfrcrange="-87 87" damping="0.003" frictionloss="0.2"/>
+                  <joint name="teleop_arm_0_fr3_joint4" pos="0 0 0" axis="0 0 1" range="-3.077 -0.1169" actuatorfrcrange="-87 87" />
                   <geom name="arm_0_fr3_link4_collision" type="mesh" mesh="link4"/>
                   <body name="arm_0_fr3_link5" pos="-0.0825 0.384 0" quat="0.707107 -0.707107 0 0" gravcomp="1">
                     <inertial pos="-0.00160396 0.0292536 -0.0972966" quat="0.919031 0.125604 0.0751531 -0.366003" mass="2.32712" diaginertia="0.0579335 0.0449144 0.0130634"/>
-                    <joint name="arm_0_fr3_joint5" pos="0 0 0" axis="0 0 1" range="-2.8763 2.8763" actuatorfrcrange="-12 12" damping="0.003" frictionloss="0.2"/>
+                    <joint name="teleop_arm_0_fr3_joint5" pos="0 0 0" axis="0 0 1" range="-2.8763 2.8763" actuatorfrcrange="-12 12" />
                     <geom name="arm_0_fr3_link5_collision" type="mesh" mesh="link5"/>
                     <body name="arm_0_fr3_link6" quat="0.707107 0.707107 0 0" gravcomp="1">
                       <inertial pos="0.0597131 -0.0410295 -0.0101693" quat="0.621301 0.552665 0.510011 0.220081" mass="1.81704" diaginertia="0.0175039 0.0161123 0.00193529"/>
-                      <joint name="arm_0_fr3_joint6" pos="0 0 0" axis="0 0 1" range="0.4398 4.6216" actuatorfrcrange="-12 12" damping="0.003" frictionloss="0.2"/>
+                      <joint name="teleop_arm_0_fr3_joint6" pos="0 0 0" axis="0 0 1" range="0.4398 4.6216" actuatorfrcrange="-12 12" />
                       <geom name="arm_0_fr3_link6_collision" type="mesh" mesh="link6"/>
                       <body name="arm_0_fr3_link7" pos="0.088 0 0" quat="0.707107 0.707107 0 0" gravcomp="1">
                         <inertial pos="0.002194 -0.0443282 0.00191499" quat="0.791293 0.607207 -0.0567169 0.044037" mass="1.28154" diaginertia="0.00593024 0.00557291 0.000548948"/>
-                        <joint name="arm_0_fr3_joint7" pos="0 0 0" axis="0 0 1" range="-3.0508 3.0508" actuatorfrcrange="-12 12" damping="0.003" frictionloss="0.2"/>
+                        <joint name="teleop_arm_0_fr3_joint7" pos="0 0 0" axis="0 0 1" range="-3.0508 3.0508" actuatorfrcrange="-12 12" />
                         <geom name="arm_0_fr3_link7_collision" type="mesh" mesh="link7"/>
                         <geom name="arm_0_gripper_fr3_hand_collision" pos="0 0 0.107" quat="0.92388 0 0 -0.382683" type="mesh" mesh="hand"/>
                         <body name="arm_0_gripper_fr3_leftfinger" pos="0 0 0.1654" quat="0.92388 0 0 -0.382683" gravcomp="1">
                           <inertial pos="0 0.015285 0.0219675" quat="0.705067 -0.0536699 0.0536699 0.705067" mass="0.0291" diaginertia="8.69232e-06 8.49e-06 1.60768e-06"/>
-                          <joint name="arm_0_gripper_fr3_finger_joint1" pos="0 0 0" axis="0 1 0" type="slide" range="0 0.04" actuatorfrcrange="-100 100" damping="0.3"/>
+                          <joint name="teleop_arm_0_gripper_fr3_finger_joint1" pos="0 0 0" axis="0 1 0" type="slide" range="0 0.04" actuatorfrcrange="-100 100" damping="0.3"/>
                           <geom size="0.011 0.0075 0.01" pos="0 0.0185 0.011" type="box"/>
                           <geom size="0.011 0.0044 0.0019" pos="0 0.0068 0.0022" type="box"/>
                           <geom size="0.00875 0.0035 0.01175" pos="0 0.0159 0.02835" quat="0.965926 0.258819 0 0" type="box"/>
@@ -109,7 +108,7 @@
                         </body>
                         <body name="arm_0_gripper_fr3_rightfinger" pos="0 0 0.1654" quat="0.382683 0 0 0.92388" gravcomp="1">
                           <inertial pos="0 0.015285 0.0219675" quat="0.705067 -0.0536699 0.0536699 0.705067" mass="0.0291" diaginertia="8.69232e-06 8.49e-06 1.60768e-06"/>
-                          <joint name="arm_0_gripper_fr3_finger_joint2" pos="0 0 0" axis="0 1 0" type="slide" range="0 0.04" actuatorfrcrange="-100 100" damping="0.3"/>
+                          <joint name="teleop_arm_0_gripper_fr3_finger_joint2" pos="0 0 0" axis="0 1 0" type="slide" range="0 0.04" actuatorfrcrange="-100 100" damping="0.3"/>
                           <geom size="0.011 0.0075 0.01" pos="0 0.0185 0.011" type="box"/>
                           <geom size="0.011 0.0044 0.0019" pos="0 0.0068 0.0022" type="box"/>
                           <geom size="0.00875 0.0035 0.01175" pos="0 0.0159 0.02835" quat="0 0 -0.258819 0.965926" type="box"/>
@@ -124,36 +123,36 @@
           </body>
           <body name="arm_1_fr3_link1" pos="0.059466 -0.434249 0.488824" quat="0.861986 0.497621 0.0483516 -0.0837596" gravcomp="1">
             <inertial pos="4.128e-07 -0.0181251 -0.0386036" quat="0.998098 -0.0605364 0.00380499 0.0110109" mass="2.92747" diaginertia="0.0239286 0.0227246 0.00610634"/>
-            <joint name="arm_1_fr3_joint1" pos="0 0 0" axis="0 0 1" range="-2.9007 2.9007" actuatorfrcrange="-87 87" damping="0.003" frictionloss="0.2"/>
+            <joint name="teleop_arm_1_fr3_joint1" pos="0 0 0" axis="0 0 1" range="-2.9007 2.9007" actuatorfrcrange="-87 87" />
             <geom name="arm_1_fr3_link1_collision" type="mesh" mesh="link1"/>
             <body name="arm_1_fr3_link2" quat="0.707107 -0.707107 0 0" gravcomp="1">
               <inertial pos="0.00318289 -0.0743222 0.00881461" quat="0.502599 0.584437 -0.465998 0.434366" mass="2.93554" diaginertia="0.0629567 0.0411924 0.0246371"/>
-              <joint name="arm_1_fr3_joint2" pos="0 0 0" axis="0 0 1" range="-1.8361 1.8361" actuatorfrcrange="-87 87" damping="0.003" frictionloss="0.2"/>
+              <joint name="teleop_arm_1_fr3_joint2" pos="0 0 0" axis="0 0 1" range="-1.8361 1.8361" actuatorfrcrange="-87 87" />
               <geom name="arm_1_fr3_link2_collision" type="mesh" mesh="link2"/>
               <body name="arm_1_fr3_link3" pos="0 -0.316 0" quat="0.707107 0.707107 0 0" gravcomp="1">
                 <inertial pos="0.0407016 -0.00482006 -0.0289731" quat="0.921025 -0.244161 0.155272 0.260745" mass="2.2449" diaginertia="0.0267409 0.0189869 0.0171587"/>
-                <joint name="arm_1_fr3_joint3" pos="0 0 0" axis="0 0 1" range="-2.9007 2.9007" actuatorfrcrange="-87 87" damping="0.003" frictionloss="0.2"/>
+                <joint name="teleop_arm_1_fr3_joint3" pos="0 0 0" axis="0 0 1" range="-2.9007 2.9007" actuatorfrcrange="-87 87" />
                 <geom name="arm_1_fr3_link3_collision" type="mesh" mesh="link3"/>
                 <body name="arm_1_fr3_link4" pos="0.0825 0 0" quat="0.707107 0.707107 0 0" gravcomp="1">
                   <inertial pos="-0.0459101 0.0630493 -0.00851879" quat="0.438018 0.803311 0.00937812 0.403414" mass="2.6156" diaginertia="0.05139 0.0372717 0.0160047"/>
-                  <joint name="arm_1_fr3_joint4" pos="0 0 0" axis="0 0 1" range="-3.077 -0.1169" actuatorfrcrange="-87 87" damping="0.003" frictionloss="0.2"/>
+                  <joint name="teleop_arm_1_fr3_joint4" pos="0 0 0" axis="0 0 1" range="-3.077 -0.1169" actuatorfrcrange="-87 87" />
                   <geom name="arm_1_fr3_link4_collision" type="mesh" mesh="link4"/>
                   <body name="arm_1_fr3_link5" pos="-0.0825 0.384 0" quat="0.707107 -0.707107 0 0" gravcomp="1">
                     <inertial pos="-0.00160396 0.0292536 -0.0972966" quat="0.919031 0.125604 0.0751531 -0.366003" mass="2.32712" diaginertia="0.0579335 0.0449144 0.0130634"/>
-                    <joint name="arm_1_fr3_joint5" pos="0 0 0" axis="0 0 1" range="-2.8763 2.8763" actuatorfrcrange="-12 12" damping="0.003" frictionloss="0.2"/>
+                    <joint name="teleop_arm_1_fr3_joint5" pos="0 0 0" axis="0 0 1" range="-2.8763 2.8763" actuatorfrcrange="-12 12" />
                     <geom name="arm_1_fr3_link5_collision" type="mesh" mesh="link5"/>
                     <body name="arm_1_fr3_link6" quat="0.707107 0.707107 0 0" gravcomp="1">
                       <inertial pos="0.0597131 -0.0410295 -0.0101693" quat="0.621301 0.552665 0.510011 0.220081" mass="1.81704" diaginertia="0.0175039 0.0161123 0.00193529"/>
-                      <joint name="arm_1_fr3_joint6" pos="0 0 0" axis="0 0 1" range="0.4398 4.6216" actuatorfrcrange="-12 12" damping="0.003" frictionloss="0.2"/>
+                      <joint name="teleop_arm_1_fr3_joint6" pos="0 0 0" axis="0 0 1" range="0.4398 4.6216" actuatorfrcrange="-12 12" />
                       <geom name="arm_1_fr3_link6_collision" type="mesh" mesh="link6"/>
                       <body name="arm_1_fr3_link7" pos="0.088 0 0" quat="0.707107 0.707107 0 0" gravcomp="1">
                         <inertial pos="0.002194 -0.0443282 0.00191499" quat="0.791293 0.607207 -0.0567169 0.044037" mass="1.28154" diaginertia="0.00593024 0.00557291 0.000548948"/>
-                        <joint name="arm_1_fr3_joint7" pos="0 0 0" axis="0 0 1" range="-3.0508 3.0508" actuatorfrcrange="-12 12" damping="0.003" frictionloss="0.2"/>
+                        <joint name="teleop_arm_1_fr3_joint7" pos="0 0 0" axis="0 0 1" range="-3.0508 3.0508" actuatorfrcrange="-12 12" />
                         <geom name="arm_1_fr3_link7_collision" type="mesh" mesh="link7"/>
                         <geom name="arm_1_gripper_fr3_hand_collision" pos="0 0 0.107" quat="0.92388 0 0 -0.382683" type="mesh" mesh="hand"/>
                         <body name="arm_1_gripper_fr3_leftfinger" pos="0 0 0.1654" quat="0.92388 0 0 -0.382683" gravcomp="1">
                           <inertial pos="0 0.015285 0.0219675" quat="0.705067 -0.0536699 0.0536699 0.705067" mass="0.0291" diaginertia="8.69232e-06 8.49e-06 1.60768e-06"/>
-                          <joint name="arm_1_gripper_fr3_finger_joint1" pos="0 0 0" axis="0 1 0" type="slide" range="0 0.04" actuatorfrcrange="-100 100" damping="0.3"/>
+                          <joint name="teleop_arm_1_gripper_fr3_finger_joint1" pos="0 0 0" axis="0 1 0" type="slide" range="0 0.04" actuatorfrcrange="-100 100" damping="0.3"/>
                           <geom size="0.011 0.0075 0.01" pos="0 0.0185 0.011" type="box"/>
                           <geom size="0.011 0.0044 0.0019" pos="0 0.0068 0.0022" type="box"/>
                           <geom size="0.00875 0.0035 0.01175" pos="0 0.0159 0.02835" quat="0.965926 0.258819 0 0" type="box"/>
@@ -161,7 +160,7 @@
                         </body>
                         <body name="arm_1_gripper_fr3_rightfinger" pos="0 0 0.1654" quat="0.382683 0 0 0.92388" gravcomp="1">
                           <inertial pos="0 0.015285 0.0219675" quat="0.705067 -0.0536699 0.0536699 0.705067" mass="0.0291" diaginertia="8.69232e-06 8.49e-06 1.60768e-06"/>
-                          <joint name="arm_1_gripper_fr3_finger_joint2" pos="0 0 0" axis="0 1 0" type="slide" range="0 0.04" actuatorfrcrange="-100 100" damping="0.3"/>
+                          <joint name="teleop_arm_1_gripper_fr3_finger_joint2" pos="0 0 0" axis="0 1 0" type="slide" range="0 0.04" actuatorfrcrange="-100 100" damping="0.3"/>
                           <geom size="0.011 0.0075 0.01" pos="0 0.0185 0.011" type="box"/>
                           <geom size="0.011 0.0044 0.0019" pos="0 0.0068 0.0022" type="box"/>
                           <geom size="0.00875 0.0035 0.01175" pos="0 0.0159 0.02835" quat="0 0 -0.258819 0.965926" type="box"/>
@@ -176,18 +175,33 @@
           </body>
           <body name="neck_2" pos="0.0197282 -0.0197283 0.8499" quat="0.923879 0 0 -0.382684" gravcomp="1">
             <inertial pos="0 0 0" mass="0.5" diaginertia="0.001 0.001 0.001"/>
-            <joint name="head_pan_joint" pos="0 0 0" axis="0 0 1" range="-1.5707 1.5707" actuatorfrcrange="-30 30"/>
+            <joint name="teleop_head_pan_joint" pos="0 0 0" axis="0 0 1" range="-1.5707 1.5707" actuatorfrcrange="-30 30"/>
             <geom pos="-0.1388 0 -1.1782" quat="0.500048 0.5 0.499952 0.5" type="mesh" mesh="neck_2"/>
             <body name="head" pos="0 -0.034 0.1521" gravcomp="1">
               <inertial pos="0 0 0" mass="2.5" diaginertia="0.001 0.001 0.001"/>
-              <joint name="head_tilt_joint" pos="0 0 0" axis="0 -1 0" range="-0.7853 0.7853" actuatorfrcrange="-30 30"/>
+              <joint name="teleop_head_tilt_joint" pos="0 0 0" axis="0 -1 0" range="-0.7853 0.7853" actuatorfrcrange="-30 30"/>
               <geom pos="-0.1388 0.034 -1.3303" quat="0.500048 0.5 0.499952 0.5" type="mesh" mesh="head"/>
             </body>
           </body>
         </body>
       </body>
     </body>
+    <body name="hand_left_ref" pos="0.95630333 0.63858014 1.15250167" quat="0.44123836 0.82842375 -0.25248566 -0.23510378" mocap="true">
+      <geom conaffinity="0" contype="0" group="2" mass="0" rgba="0 0 0.9 0.9" type="mesh" mesh="link7"/>
+    </body>
+    <body name="hand_right_ref" pos="0.95629905 -0.63858469 1.1525025" quat="-0.44123862 0.82842475 0.25248349 -0.2351021" mocap="true">
+      <geom conaffinity="0" contype="0" group="2" mass="0" rgba="0 0 0.9 0.9" type="mesh" mesh="link7"/>
+    </body>
+    <body name="head_ref" pos="0.13939987 -0.0340001 1.3303" mocap="true">
+      <geom conaffinity="0" contype="0" group="2" mass="0" rgba="0 0 0.9 0.9" pos="-0.1388 0.034 -1.3303" quat="0.500048 0.5 0.499952 0.5" type="mesh" mesh="head"/>
+    </body>
   </worldbody>
+
+  <equality>
+    <weld name="arm_0_fr3_link7" body1="hand_left_ref" body2="arm_0_fr3_link7" anchor="0 0 0" relpose="0 0 0 0 0 0 0" torquescale="1"/>
+    <weld name="arm_1_fr3_link7" body1="hand_right_ref" body2="arm_1_fr3_link7" anchor="0 0 0" relpose="0 0 0 0 0 0 0" torquescale="1"/>
+    <weld name="head_link" body1="head_ref" body2="head" anchor="0 0 0" relpose="0 0 0 0 0 0 0" torquescale="1"/>
+  </equality>
 
   <contact>
     <exclude body1="garmi" body2="front_left_wheel_link"/>
@@ -200,48 +214,38 @@
   </contact>
 
   <equality>
-    <joint joint1="arm_0_gripper_fr3_finger_joint1" joint2="arm_0_gripper_fr3_finger_joint2" solimp="0.95 0.99 0.001" solref="0.005 1"/>
-    <joint joint1="arm_1_gripper_fr3_finger_joint1" joint2="arm_1_gripper_fr3_finger_joint2" solimp="0.95 0.99 0.001" solref="0.005 1"/>
-    <joint joint1="lift_0_lower_joint" joint2="lift_0_upper_joint" solimp="0.95 0.99 0.001" solref="0.005 1"/>
+    <joint joint1="teleop_arm_0_gripper_fr3_finger_joint1" joint2="teleop_arm_0_gripper_fr3_finger_joint2" solimp="0.95 0.99 0.001" solref="0.005 1"/>
+    <joint joint1="teleop_arm_1_gripper_fr3_finger_joint1" joint2="teleop_arm_1_gripper_fr3_finger_joint2" solimp="0.95 0.99 0.001" solref="0.005 1"/>
   </equality>
 
   <tendon>
     <fixed name="left_gripper">
-      <joint joint="arm_0_gripper_fr3_finger_joint1" coef="0.5"/>
-      <joint joint="arm_0_gripper_fr3_finger_joint2" coef="0.5"/>
+      <joint joint="teleop_arm_0_gripper_fr3_finger_joint1" coef="0.5"/>
+      <joint joint="teleop_arm_0_gripper_fr3_finger_joint2" coef="0.5"/>
     </fixed>
     <fixed name="right_gripper">
-      <joint joint="arm_1_gripper_fr3_finger_joint1" coef="0.5"/>
-      <joint joint="arm_1_gripper_fr3_finger_joint2" coef="0.5"/>
-    </fixed>
-    <fixed name="lift_0">
-      <joint joint="lift_0_lower_joint" coef="0.5"/>
-      <joint joint="lift_0_upper_joint" coef="0.5"/>
+      <joint joint="teleop_arm_1_gripper_fr3_finger_joint1" coef="0.5"/>
+      <joint joint="teleop_arm_1_gripper_fr3_finger_joint2" coef="0.5"/>
     </fixed>
   </tendon>
-
-  <actuator>
-    <position name="lift_0" tendon="lift_0" ctrlrange="0 0.4" kp="100000" kv="10000"/>
-    <position name="head_pan_actuator" joint="head_pan_joint" ctrlrange="-1.5707 1.5707" kp="1000" kv="100"/>
-    <position name="head_tilt_actuator" joint="head_tilt_joint" ctrlrange="-0.7853 0.7853" kp="1000" kv="100"/>
-    <general dyntype="none" biastype="affine" ctrlrange="-2.8973 2.8973" forcerange="-87 87" name="arm_0_actuator1" joint="arm_0_fr3_joint1" gainprm="4500" biasprm="0 -4500 -450"/>
-    <general dyntype="none" biastype="affine" ctrlrange="-1.7628 1.7628" forcerange="-87 87" name="arm_0_actuator2" joint="arm_0_fr3_joint2" gainprm="4500" biasprm="0 -4500 -450"/>
-    <general dyntype="none" biastype="affine" ctrlrange="-2.8973 2.8973" forcerange="-87 87" name="arm_0_actuator3" joint="arm_0_fr3_joint3" gainprm="3500" biasprm="0 -3500 -350"/>
-    <general dyntype="none" biastype="affine" ctrlrange="-3.0718 -0.0698" forcerange="-87 87" name="arm_0_actuator4" joint="arm_0_fr3_joint4" gainprm="3500" biasprm="0 -3500 -350"/>
-    <general dyntype="none" biastype="affine" ctrlrange="-2.8973 2.8973" forcerange="-12 12" name="arm_0_actuator5" joint="arm_0_fr3_joint5" gainprm="2000" biasprm="0 -2000 -200"/>
-    <general dyntype="none" biastype="affine" ctrlrange="-0.0175 3.7525" forcerange="-12 12" name="arm_0_actuator6" joint="arm_0_fr3_joint6" gainprm="2000" biasprm="0 -2000 -200"/>
-    <general dyntype="none" biastype="affine" ctrlrange="-2.8973 2.8973" forcerange="-12 12" name="arm_0_actuator7" joint="arm_0_fr3_joint7" gainprm="2000" biasprm="0 -2000 -200"/>
-    <general dyntype="none" biastype="affine" ctrlrange="-2.8973 2.8973" forcerange="-87 87" name="arm_1_actuator1" joint="arm_1_fr3_joint1" gainprm="4500" biasprm="0 -4500 -450"/>
-    <general dyntype="none" biastype="affine" ctrlrange="-1.7628 1.7628" forcerange="-87 87" name="arm_1_actuator2" joint="arm_1_fr3_joint2" gainprm="4500" biasprm="0 -4500 -450"/>
-    <general dyntype="none" biastype="affine" ctrlrange="-2.8973 2.8973" forcerange="-87 87" name="arm_1_actuator3" joint="arm_1_fr3_joint3" gainprm="3500" biasprm="0 -3500 -350"/>
-    <general dyntype="none" biastype="affine" ctrlrange="-3.0718 -0.0698" forcerange="-87 87" name="arm_1_actuator4" joint="arm_1_fr3_joint4" gainprm="3500" biasprm="0 -3500 -350"/>
-    <general dyntype="none" biastype="affine" ctrlrange="-2.8973 2.8973" forcerange="-12 12" name="arm_1_actuator5" joint="arm_1_fr3_joint5" gainprm="2000" biasprm="0 -2000 -200"/>
-    <general dyntype="none" biastype="affine" ctrlrange="-0.0175 3.7525" forcerange="-12 12" name="arm_1_actuator6" joint="arm_1_fr3_joint6" gainprm="2000" biasprm="0 -2000 -200"/>
-    <general dyntype="none" biastype="affine" ctrlrange="-2.8973 2.8973" forcerange="-12 12" name="arm_1_actuator7" joint="arm_1_fr3_joint7" gainprm="2000" biasprm="0 -2000 -200"/>
-  </actuator>
 
   <actuator>
     <position name="left_gripper" tendon="left_gripper" ctrlrange="0 0.04" kp="500" kv="10"/>
     <position name="right_gripper" tendon="right_gripper" ctrlrange="0 0.04" kp="500" kv="10"/>
   </actuator>
+
+  <extension>
+    <plugin plugin="mujoco.multiverse_connector">
+      <instance name="mujoco_client">
+        <config key="transport" value="zmq" />
+        <config key="host" value="tcp://127.0.0.1" />
+        <config key="server_port" value="7000" />
+        <config key="client_port" value="7550" />
+        <config key="world_name" value="world" />
+        <config key="simulation_name" value="gami_teleop" />
+        <config key="send" value="{'joint': ['joint_angular_position', 'joint_linear_position']}" />
+        <config key="receive" value="{'head_link_ref': ['position', 'quaternion'], 'hand_left_ref': ['position', 'quaternion'], 'hand_right_ref': ['position', 'quaternion'], 'left_gripper': ['scalar'], 'right_gripper': ['scalar']}" />
+      </instance>
+    </plugin>
+  </extension>
 </mujoco>
