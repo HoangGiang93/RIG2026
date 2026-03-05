@@ -249,7 +249,7 @@
         <config key="world_name" value="world" />
         <config key="simulation_name" value="gami_teleop" />
         <config key="send" value="{'joint': ['joint_angular_position', 'joint_linear_position']}" />
-        <config key="receive" value="{'head_link_ref': ['position', 'quaternion'], 'hand_left_ref': ['position', 'quaternion'], 'hand_right_ref': ['position', 'quaternion'], 'left_gripper': ['scalar'], 'right_gripper': ['scalar']}" />
+        <config key="receive" value="{'head_ref': ['position', 'quaternion'], 'hand_left_ref': ['position', 'quaternion'], 'hand_right_ref': ['position', 'quaternion'], 'left_gripper': ['scalar'], 'right_gripper': ['scalar']}" />
       </instance>
     </plugin>
   </extension>
