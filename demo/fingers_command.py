@@ -16,10 +16,8 @@ class GripperThreshold:
 
 class FingersCommand(MultiverseClient):
     finger_joints_command: Dict[str, float] = {
-        "gripper_left_left_finger_joint_position": numpy.nan,
-        "gripper_left_right_finger_joint_position": numpy.nan,
-        "gripper_right_left_finger_joint_position": numpy.nan,
-        "gripper_right_right_finger_joint_position": numpy.nan,
+        "left_gripper": numpy.nan,
+        "right_gripper": numpy.nan,
     }
 
     gripper_names: List[str] = [
@@ -33,7 +31,7 @@ class FingersCommand(MultiverseClient):
                 lower=0.0,
                 upper=0.1,
                 fingers_command={
-                    "gripper_left_left_finger_joint_position": 0.045,
+                    "left_gripper": 0.045,
                     "gripper_left_right_finger_joint_position": 0.045,
                 },
             ),

@@ -10,7 +10,7 @@ MUJOCO_VERSION="${MUJOCO_VERSION:-3.5.0}"
 DEMO_DIR="demo"
 VENV_DIR="${DEMO_DIR}/multiverse"
 MUJOCO_DIR="${DEMO_DIR}/mujoco-${MUJOCO_VERSION}"
-URDF_ROS2="${DEMO_DIR}/assets/urdf/garmi_with_ros2_control.urdf"
+URDF_ROS2="${DEMO_DIR}/assets/urdf/garmi.urdf"
 MJCF_SCENE="${DEMO_DIR}/assets/mjcf/scene_position_with_multiverse.xml"
 
 ROS_DISTRO="${ROS_DISTRO:-jazzy}"
@@ -20,6 +20,7 @@ COLCON_WS="Multiverse/MultiverseConnector/ros_connector/ros_ws/multiverse_ws2"
 ROSPKG_SETUP="${COLCON_WS}/install/setup.bash"
 
 REQ_LOCAL="${DEMO_DIR}/requirements.txt"
+REQ_ROOT="requirements.txt"
 
 # --------------------------
 # Helpers
@@ -72,7 +73,7 @@ if [[ ! -d "$VENV_DIR" ]]; then
   source "$VENV_DIR/bin/activate"
   python -m pip install -U pip
   pip install -r "$REQ_LOCAL"
-  pip install -e "Multiverse/MultiverseConnector/ros_connector"
+  (cd Multiverse; pip install -r "$REQ_ROOT"; pip install -e "MultiverseConnector/ros_connector")
 else
   log "Using existing venv: $PWD/$VENV_DIR"
   # shellcheck disable=SC1090
@@ -141,7 +142,7 @@ set +u
 source '${ROS_SETUP}'
 source '${ROSPKG_SETUP}'
 set -u
-# ros2 run robot_state_publisher robot_state_publisher --ros-args --remap /robot_description:=/robot_description -p robot_description:=\"\$(xacro ./${URDF_ROS2} | sed 's|file://|file://${PWD}/Demos/1_TiagoDualInApartment/assets/urdf/|g')\" -r tf:=/tf
+ros2 run robot_state_publisher robot_state_publisher --ros-args --remap /robot_description:=/robot_description -p robot_description:=\"\$(xacro ./${URDF_ROS2} | sed 's|file://|file://${PWD}/demo/assets/urdf/|g')\" -r tf:=/tf
 "
 
 tmux_send "$SESH":0.3 \
@@ -150,7 +151,7 @@ set +u
 source '${ROS_SETUP}'
 source '${ROSPKG_SETUP}'
 set -u
-# ros2 run controller_manager ros2_control_node --ros-args --remap /robot_description:=/robot_description --params-file './${DEMO_DIR}/config/ros2_control.yaml'
+ros2 run controller_manager ros2_control_node --ros-args --remap /robot_description:=/robot_description --params-file './${DEMO_DIR}/config/ros2_control.yaml'
 "
 
 tmux_send "$SESH":0.4 \
@@ -159,8 +160,8 @@ set +u
 source '${ROS_SETUP}'
 source '${ROSPKG_SETUP}'
 set -u
-# ros2 run controller_manager spawner joint_state_broadcaster arm_left_controller arm_right_controller torso_controller head_controller --param-file ./${DEMO_DIR}/config/ros2_control.yaml
-# ros2 run rviz2 rviz2 --display-config ./${DEMO_DIR}/config/rviz2.rviz
+ros2 run controller_manager spawner joint_state_broadcaster garmi_lift_controller garmi_arm_0_controller garmi_arm_1_controller garmi_head_controller --param-file ./${DEMO_DIR}/config/ros2_control.yaml
+ros2 run rviz2 rviz2 --display-config ./${DEMO_DIR}/config/rviz2.rviz
 "
 
 tmux_send "$SESH":0.5 \
@@ -170,7 +171,7 @@ source '${ROS_SETUP}'
 source '${ROSPKG_SETUP}'
 set -u
 cd ./${DEMO_DIR}
-# ros2 run vr_teleop_action vr_teleop_action_server --ros-args --params-file ./config/vr_teleop_jazzy.yaml
+ros2 run vr_teleop_action vr_teleop_action_server --ros-args --params-file ./config/vr_teleop_jazzy.yaml
 "
 
 tmux_send "$SESH":0.6 \
@@ -179,7 +180,7 @@ set +u
 source '${ROS_SETUP}'
 source '${ROSPKG_SETUP}'
 set -u
-# ros2 action send_goal /teleop vr_teleop_interfaces/action/Teleop \"timeout: {sec: -1}\"
+ros2 action send_goal /teleop vr_teleop_interfaces/action/Teleop \"timeout: {sec: -1}\"
 "
 
 tmux_send "$SESH":0.7 \
@@ -189,13 +190,17 @@ set +u
 source '${ROS_SETUP}'
 source '${ROSPKG_SETUP}'
 set -u
-# multiverse_ros_connector --subscribers=\"{'joint_state':[{'meta_data':{'world_name':'world','length_unit':'m','angle_unit':'rad','mass_unit':'kg','time_unit':'s','handedness':'rhs'},'port':7300,'topic':'/joint_states','rate':60,'joint_types':{'torso_lift_joint':'prismatic'}}]}\"
+multiverse_ros_connector --subscribers=\"{'joint_state':[{'meta_data':{'world_name':'world','length_unit':'m','angle_unit':'rad','mass_unit':'kg','time_unit':'s','handedness':'rhs'},'port':7300,'topic':'/joint_states','rate':60,'joint_types':{'lift_0_lower_joint':'prismatic', 'lift_0_upper_joint':'prismatic', 'arm_0_gripper_fr3_finger_joint1':'prismatic', 'arm_0_gripper_fr3_finger_joint2':'prismatic', 'arm_1_gripper_fr3_finger_joint1':'prismatic', 'arm_1_gripper_fr3_finger_joint2':'prismatic'}}]}\"
 "
 
 tmux_send "$SESH":0.8 \
 "
-echo 'Pane 8: (placeholder)'
-bash
+source '${VENV_DIR}/bin/activate'
+set +u
+source '${ROS_SETUP}'
+source '${ROSPKG_SETUP}'
+set -u
+multiverse_ros_connector --subscribers=\"{'cmd_vel':[{'meta_data':{'world_name':'world','length_unit':'m','angle_unit':'rad','mass_unit':'kg','time_unit':'s','handedness':'rhs'},'port':7330,'topic':'/cmd_vel','rate':60,'body':'garmi'}]}\"
 "
 
 tmux select-pane -t "$SESH":0.0
