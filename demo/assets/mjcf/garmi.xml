@@ -31,7 +31,7 @@
 
   <worldbody>
     <body name="garmi" childclass="panda">
-      <joint type="free"/>
+      <!-- <joint type="free"/> -->
       <geom type="mesh" rgba="0.15 0.15 0.15 1" mesh="body-collision"/>
       <geom size="0.2465 0.2465 0.0275" pos="0 0 0.24615" quat="0.92388 0 0 0.382683" type="box" rgba="0.8 0.8 0.8 1"/>
       <geom size="0.1 0.1 0.01" pos="0.1115 0 0.2863" quat="0.92388 0 0 0.382683" type="box" rgba="0.7 0.7 0.7 1"/>
