@@ -11,7 +11,7 @@ DEMO_DIR="demo"
 VENV_DIR="${DEMO_DIR}/multiverse"
 MUJOCO_DIR="${DEMO_DIR}/mujoco-${MUJOCO_VERSION}"
 URDF_ROS2="${DEMO_DIR}/assets/urdf/garmi.urdf"
-MJCF_SCENE="${DEMO_DIR}/assets/mjcf/scene_position_with_multiverse.xml"
+MJCF_SCENE="${DEMO_DIR}/assets/mjcf/garmi_apartment_with_multiverse.xml"
 
 ROS_DISTRO="${ROS_DISTRO:-jazzy}"
 ROS_SETUP="/opt/ros/${ROS_DISTRO}/setup.bash"
@@ -125,7 +125,7 @@ tmux select-layout -t "$SESH":0 tiled
 
 tmux_send "$SESH":0.0 \
 "
-./Multiverse/MultiverseServer/bin/multiverse_server_cpp --transport zmq --bind tcp://127.0.0.1:7000 --transport tcp --bind 192.168.0.101:8000
+./Multiverse/MultiverseServer/bin/multiverse_server_cpp --transport zmq --bind tcp://127.0.0.1:7000 --transport udp --bind 192.168.0.101:8000
 "
 
 tmux_send "$SESH":0.1 \

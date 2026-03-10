@@ -1,0 +1,102 @@
+<mujoco model="garmi_scene">
+
+  <include file="garmi.xml"/>
+
+	<default>
+		<default class="kitchen">
+			<joint armature="0.01" damping="100" />
+		</default>
+	</default>
+
+	<visual>
+		<headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0" />
+		<rgba haze="0.15 0.25 0.35 1" />
+		<global azimuth="150" elevation="-20" realtime="1" />
+	</visual>
+
+	<asset>
+		<texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072" />
+		<texture builtin="checker" height="100" name="texplane" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" type="2d" width="200" />
+		<material name="MatPlane" reflectance="0.1" shininess="0.4" specular="1" texrepeat="5 5" texuniform="true" texture="texplane" />
+	</asset>
+
+	<worldbody>
+		<body name="floor">
+			<geom name="floor" pos="0 0 0" size="0 0 1" type="plane" material="MatPlane" contype="1" conaffinity="1" />
+		</body>
+	</worldbody>
+
+	<worldbody>
+		<body name="kitchen" pos="-6.32077 0.5523 0" quat="1 0 0 -1" childclass="kitchen">
+			<body name="cabinet" pos="1.0423 7.42077 1">
+				<geom type="box" pos="-0.3023 0.00923 -0.075" size="0.93 0.31 0.02" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="-0.04 0.024 -0.89" size="0.21 0.28 0.01" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="-0.04 0.024 -0.486" size="0.21 0.28 0.01" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="0.412 0.024 -0.89" size="0.21 0.28 0.01" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="0.412 0.024 -0.59" size="0.21 0.28 0.01" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="-0.255 0.024 -0.5" size="0.01 0.28 0.4" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="0.187 0.024 -0.5" size="0.02 0.28 0.4" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="0.64 0.024 -0.5" size="0.02 0.28 0.4" rgba="0.9 0.9 0.9 1" />
+			</body>
+			<body name="drawer_1" pos="0.0523 7.28255 0.77895">
+				<joint name="drawer_1_joint" type="slide" axis="0 -1 0" range="0 0.4" />
+				<geom type="box" pos="0 -0.13 0.024" size="0.222 0.009 0.1" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="0 0.12 -0.06" size="0.194 0.24 0.01" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="-0.18 0.12 -0.012" size="0.01 0.24 0.059" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="0.18 0.12 -0.012" size="0.01 0.24 0.059" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="0 0.37 -0.012" size="0.194 0.009 0.059" rgba="0.9 0.9 0.9 1" />
+				<body name="drawer_1_handle" pos="0 -0.17 0.03">
+					<geom type="cylinder" pos="0 0 0" size="0.01 0.1" quat="1 0 1 0" rgba="0.9 0.9 0.9 1" />
+				</body>
+			</body>
+			<body name="drawer_2" pos="0.0523 7.28255 0.57795">
+				<joint name="drawer_2_joint" type="slide" axis="0 -1 0" range="0 0.4" />
+				<geom type="box" pos="0 -0.13 0.024" size="0.222 0.009 0.1" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="0 0.12 -0.06" size="0.194 0.24 0.01" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="-0.18 0.12 -0.012" size="0.01 0.24 0.059" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="0.18 0.12 -0.012" size="0.01 0.24 0.059" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="0 0.37 -0.012" size="0.194 0.009 0.059" rgba="0.9 0.9 0.9 1" />
+				<body name="drawer_2_handle" pos="0 -0.17 0.03">
+					<geom type="cylinder" pos="0 0 0" size="0.01 0.1" quat="1 0 1 0" rgba="0.9 0.9 0.9 1" />
+				</body>
+			</body>
+			<body name="drawer_3" pos="0.0523 7.28255 0.27785">
+				<joint name="drawer_3_joint" type="slide" axis="0 -1 0" range="0 0.4" />
+				<geom type="box" pos="0 -0.13 0.024" size="0.222 0.009 0.2" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="0 0.12 -0.14" size="0.194 0.24 0.01" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="-0.18 0.12 0.01" size="0.01 0.24 0.17" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="0.18 0.12 0.01" size="0.01 0.24 0.17" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="0 0.37 0.01" size="0.194 0.009 0.17" rgba="0.9 0.9 0.9 1" />
+				<body name="drawer_3_handle" pos="0 -0.17 0.03">
+					<geom type="cylinder" pos="0 0 0" size="0.01 0.1" quat="1 0 1 0" rgba="0.9 0.9 0.9 1" />
+				</body>
+			</body>
+			<body name="drawer_4" pos="1.4523 7.28255 0.77795">
+				<joint name="drawer_4_joint" type="slide" axis="0 -1 0" range="0 0.4" />
+				<geom type="box" pos="0 -0.13 0.024" size="0.222 0.009 0.1" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="0 0.12 -0.06" size="0.194 0.24 0.01" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="-0.18 0.12 -0.012" size="0.01 0.24 0.059" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="0.18 0.12 -0.012" size="0.01 0.24 0.059" rgba="0.9 0.9 0.9 1" />
+				<geom type="box" pos="0 0.37 -0.012" size="0.194 0.009 0.059" rgba="0.9 0.9 0.9 1" />
+				<body name="drawer_4_handle" pos="0 -0.17 0.03">
+					<geom type="cylinder" pos="0 0 0" size="0.01 0.1" quat="1 0 1 0" rgba="0.9 0.9 0.9 1" />
+				</body>
+			</body>
+			<body name="cabinet_door_1" pos="1.22 7.15375 0.5">
+				<joint name="cabinet_door_1_joint" type="hinge" axis="0 0 1" range="0 90" />
+				<geom type="box" pos="-0.226 0 0" size="0.22 0.009 0.4" rgba="0.9 0.9 0.9 1" />
+				<body name="cabinet_door_1_handle" pos="-0.4 -0.04 0.27">
+					<geom type="cylinder" pos="0 0 0" size="0.01 0.1" rgba="0.9 0.9 0.9 1" />
+				</body>
+			</body>
+			<body name="cabinet_door_2" pos="1.676 7.15375 0.5">
+				<joint name="cabinet_door_2_joint" type="hinge" axis="0 0 1" range="0 90" />
+				<geom type="box" pos="-0.226 0 -0.1" size="0.22 0.009 0.3" rgba="0.9 0.9 0.9 1" />
+				<body name="cabinet_door_2_handle" pos="-0.4 -0.04 0.07">
+					<geom type="cylinder" pos="0 0 0" size="0.01 0.1" rgba="0.9 0.9 0.9 1" />
+				</body>
+			</body>
+		</body>
+	</worldbody>
+
+</mujoco>
